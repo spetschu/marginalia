@@ -21,12 +21,15 @@ tags = {
 	'bq' : "http://github.com/spetschu/marginalia/raw/master/images/bq.png",
 	'd'  : "http://github.com/spetschu/marginalia/raw/master/images/d.png",
 	'ch' : "http://github.com/spetschu/marginalia/raw/master/images/ch.png",
-	's'  : "http://github.com/spetschu/marginalia/raw/master/images/ch.png"
+	's'  : "http://github.com/spetschu/marginalia/raw/master/images/ch.png",
+	'/'  : "http://github.com/spetschu/marginalia/raw/master/images/bar.png"
 }
 
 //--------- do not edit below unless you know what you're doing ------
 
-addGlobalStyle(GM_getResourceText("kindlestyle"))
+if (typeof GM_getResourceText == 'function') {
+	addGlobalStyle(GM_getResourceText("kindlestyle"))
+}
 handleNotesAndHighlights() 
 
 function addGlobalStyle(css) {
@@ -49,13 +52,14 @@ function handleNotesAndHighlights() {
 		var annotation = parseAnnotation(noteText)
 		var img = xpath( ".//img[@class='quote removableQuote']", thisDiv).snapshotItem(0)
 		if (annotation) {
+			handleSpecialAnnotations(annotation, thisDiv)
 			noteSpan.innerHTML = annotation['note']
 		}
 		if(img) {
 			img.width = 22
 			img.height = 18
 			if (annotation) {
-				img.src = annotation['tag']
+				img.src = annotation['img']
 			} else if (hideDefaultIcons) {
 				img.src = spacerImage
 			}
@@ -64,13 +68,31 @@ function handleNotesAndHighlights() {
 }
 
 function parseAnnotation(noteText) {
-	var result = noteText.match(/^\.(\w+)(\s+|$)(.*)/)
+	var result = noteText.match(/^\.([\w\/]+)(\s+|$)(.*)/)
 	if (result) {
 		if (tags[result[1]]) {
-			console.log('Matched tag! ' + result)
-			return { 'tag' : tags[result[1]], 'note' : result[3] }
+			return { 'tag' : result[1], 'img' : tags[result[1]], 'note' : result[3] }
 		} else {
 			console.log('Unknown tag: ' + result[1])
+		}
+	}
+}
+
+// Do any fancy processing of tags here. This method potentially modifies both the annotation and the 
+// span. It is a manky mix of side effects and poking at private parts, but at least it is all in 
+// one place.
+function handleSpecialAnnotations(annotation, div) {
+	if (annotation['tag'] == '/') {
+		var highlightSpan = xpath( ".//span[@class='highlight']", div).snapshotItem(0)
+		var original = highlightSpan.innerHTML
+		if (original.length > 300) {
+			// summarize the note if it is long and put the full version in an on-mouse-over span
+			highlightSpan.title = original
+			summaryLength = original.length * 0.15
+			summaryLength = (summaryLength > 150) ? 150 : summaryLength
+			summarized = original.substr(0, summaryLength) + ' .... '
+			summarized += original.substr(original.length - summaryLength)
+			highlightSpan.innerHTML = summarized
 		}
 	}
 }
