@@ -82,10 +82,11 @@ function parseAnnotation(noteText) {
 // span. It is a manky mix of side effects and poking at private parts, but at least it is all in 
 // one place.
 function handleSpecialAnnotations(annotation, div) {
-	if (annotation['tag'] == '/') {
+	// TESTING summarize for all entries
+	//if (annotation['tag'] == '/') {
 		var highlightSpan = xpath( ".//span[@class='highlight']", div).snapshotItem(0)
 		var original = highlightSpan.innerHTML
-		if (original.length > 300) {
+		if (original.length > 400) {
 			// summarize the note if it is long and put the full version in an on-mouse-over span
 			highlightSpan.title = original
 			summaryLength = original.length * 0.15
@@ -94,7 +95,7 @@ function handleSpecialAnnotations(annotation, div) {
 			summarized += original.substr(original.length - summaryLength)
 			highlightSpan.innerHTML = summarized
 		}
-	}
+	//} END TESTING
 }
 
 function xpath(path, context) {
