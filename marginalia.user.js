@@ -86,7 +86,7 @@ function handleSpecialAnnotations(annotation, div) {
 	//if (annotation['tag'] == '/') {
 		var highlightSpan = xpath( ".//span[@class='highlight']", div).snapshotItem(0)
 		var original = highlightSpan.innerHTML
-		if (original.length > 400) {
+		if (original.length > 500) {
 			// summarize the note if it is long and put the full version in an on-mouse-over span
 			highlightSpan.title = original
 			summaryLength = original.length * 0.15
