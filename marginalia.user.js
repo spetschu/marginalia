@@ -78,9 +78,10 @@ function parseAnnotation(noteText) {
 	}
 }
 
-// Do any fancy processing of tags here. This method potentially modifies both the annotation and the 
-// span. It is a manky mix of side effects and poking at private parts, but at least it is all in 
-// one place.
+// Do any fancy processing of tags here. This method potentially modifies both the 
+// annotation and the span. It is a manky mix of side effects and poking at private 
+// parts, but at least it is all in one place.
+// test diff
 function handleSpecialAnnotations(annotation, div) {
 	// TESTING summarize for all entries
 	//if (annotation['tag'] == '/') {
