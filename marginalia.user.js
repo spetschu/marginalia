@@ -4,7 +4,9 @@
 // @description    Improve the kindle notes and highlights page.
 // @include		   http://kindle.amazon.com/your_highlights
 // @include		   http://kindle.amazon.com/work/*
+// @include		   http://kindle.amazon.com/refresh/*
 // @resource	   kindlestyle http://github.com/findango/marginalia/raw/master/kindlestyle.css
+// @require        http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js
 // ==/UserScript==
 
 
@@ -30,7 +32,11 @@ tags = {
 if (typeof GM_getResourceText == 'function') {
 	addGlobalStyle(GM_getResourceText("kindlestyle"))
 }
-handleNotesAndHighlights() 
+console.log('Parsing notes')
+$(document).ready(function() {
+	summarizeLongHighlights()
+	handleNotesAndHighlights() // TODO: rewrite using jquery
+});
 
 function addGlobalStyle(css) {
 	var head, style;
@@ -76,6 +82,37 @@ function parseAnnotation(noteText) {
 			console.log('Unknown tag: ' + result[1])
 		}
 	}
+}
+
+function summarizeLongHighlights() {
+	$('span.highlight').each(function() {
+     	var original = $(this).text()
+     	var summarized = original.substring(0, 50)
+     	$(this).attr('content', original)
+     	$(this).text(summarized)
+	});
+
+	// ensure dynamic content is dealt with
+	$('span.highlight').change(function() {
+     	var span = $('span.highlight')
+     	var original = span.text()
+     	var summarized = original.substring(0, 50)
+     	span.attr('content', original)
+     	span.text(summarized)
+	});
+	
+	// toggle full/summarized text
+	$('span.highlight').click(function() {
+     	console.log('Clicked on span')
+     	var original = $(this).attr('content')
+     	var body = $(this).text()  
+     	if (body.length < original.length) {
+          	$(this).text(original)
+     	} else {
+          	var summarized = summarizeContent(body)
+          	$(this).text(summarized)
+     	}
+	});
 }
 
 // Do any fancy processing of tags here. This method potentially modifies both the 

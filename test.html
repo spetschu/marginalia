@@ -2,11 +2,53 @@
 <head>
         <title>mytitle</title>
 
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>;
 <script type="text/javascript" src="marginalia.user.js"></script>
+
+<script type="text/javascript">
+/*
+$(document).ready(function() {
+	$('span.highlight').each(function() {
+     	var original = $(this).text()
+		console.log(original)
+     	$(this).attr('content', original)
+     	var summarized = summarizeContent(original)
+     	$(this).text(summarized)
+	});
+	
+	// ensure dynamic content is dealt with
+	
+	$('span.highlight').change(function() {
+     	var span = $('span.highlight')
+     	var original = span.text()
+     	var summarized = summarizeContent(original)
+     	span.text(summarized)
+	});
+
+	// toggle full/summarized text
+	$('span.highlight').click(function() {
+     	var original = $(this).attr('content')
+     	var body = $(this).text()  
+     	if (body.length < original.length) {
+          	$(this).text(original)
+     	} else {
+          	var summarized = summarizeContent(body)
+          	$(this).text(summarized)
+     	}
+	});
+});
+*/
+
+function summarizeContent(content) {
+     return content.substring(0, 50)
+}
+</script>
 
 </head>
 
-<body onload="handleNotesAndHighlights();">
+<!-- <body onload="handleNotesAndHighlights();"> -->
+<body>
 
 <h2 id="myheader">header</h2>
 
@@ -22,21 +64,21 @@
   <span class="hidden annotation_id">a2GVAIYPS073TP</span>
   <span class="hidden end_location">8596</span>
   <span class="yourNote ">
-    
+   
       Note:
-    
+   
   </span>
   <span class="noteContent">.qq test note</span>
-  
+ 
   <a href="/user_annotation_relation/edit_note_popup?annotation_id=a2GVAIYPS073TP&amp;asin=B002V09184&amp;attached=a2KD2XB2WR4J1Z&amp;end_location=8596&amp;note_area_id=editNotea2KD2XB2WR4J1Z_a2GVAIYPS073TP&amp;note_text=.qq+test+note&amp;return_to=%2Fyour_highlights" class="addEditNote">Edit this note</a>
 </p>
 </div>
 
-<!-- This example has a ./ annotation and should truncate the note contents and put the original in 
+<!-- This example has a ./ annotation and should truncate the note contents and put the original in
 and on-mouse-over of the span -->
 <div class="highlightRow personalHighlight">
 
-     <img alt="&ldquo;" class="quote removableQuote" src="http://g-ecx.images-amazon.com/images/G/01/reading/images/perOpenQuoteSm._V216850697_.png" title="Personal Highlight" />
+     <img alt="&ldquo;" class="quote removableQuote" src="http://g-ecx.images-amazon.com/images/G/01/reading/images/perOpenQuoteSm._V216850697_.png"; title="Personal Highlight" />
 
         <div class="text">
                 <span class="highlight">Giuliano della Rovere, His Holiness Pope Julius IIâ€”il pontefice terribile. Should be truncated in the middle and on mouse over, the entire text should show up.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vestibulum erat non lectus mollis aliquet. Morbi vehicula pharetra lectus sit amet consequat. Sed condimentum, tellus mollis pretium condimentum, quam libero facilisis ligula, vel euismod metus orci sed metus. Proin sed convallis nibh. Nulla facilisi. Maecenas aliquam feugiat lectus, ut faucibus lorem mattis a. Praesent eget arcu amet. And this is the last sentence of the highlight.</span><a href="kindle://book?action=open&asin=B000OZ0NNA&location=161" class="k4pcReadMore readMore">Read&nbsp;more&nbsp;at&nbsp;location&nbsp;161</a><form action="/user_annotation_relation/delete_highlight" class="deleteHighlightForm" method="post"><div style="margin:0;padding:0"><input name="authenticity_token" type="hidden" value="8b4ec68b583c80f534d2719b9533f6294a869d23" /></div><input id="asin" name="asin" type="hidden" value="B000OZ0NNA" /><input id="annotation_id" name="annotation_id" type="hidden" value="a1M80MSCOJGM0B" /><span class="deleteHighlight"><button class="textSubmit" name="delete" type="submit"><span class="bullet">&nbsp;&nbsp;&nbsp;&#8226;&nbsp;</span><span class="underline">Delete&nbsp;this&nbsp;highlight</span></button></span><span class="deleteHighlightUndo hidden"><button class="textSubmit" name="undo" type="submit"><span class="bullet">&nbsp;&nbsp;&nbsp;&#8226;&nbsp;</span><span class="underline">Undo&nbsp;deletion</span></button></span></form>
@@ -58,10 +100,10 @@ and on-mouse-over of the span -->
 
 <div class="highlightRow personalHighlight">
 
-     <img alt="&ldquo;" class="quote removableQuote" src="http://g-ecx.images-amazon.com/images/G/01/reading/images/perOpenQuoteSm._V216850697_.png" title="Personal Highlight" />
+     <img alt="&ldquo;" class="quote removableQuote" src="http://g-ecx.images-amazon.com/images/G/01/reading/images/perOpenQuoteSm._V216850697_.png"; title="Personal Highlight" />
 
         <div class="text">
-                <span class="highlight">Giuliano della Rovere, His Holiness Pope Julius IIâ€”il pontefice terribile.</span><a href="kindle://book?action=open&asin=B000OZ0NNA&location=161" class="k4pcReadMore readMore">Read&nbsp;more&nbsp;at&nbsp;location&nbsp;161</a><form action="/user_annotation_relation/delete_highlight" class="deleteHighlightForm" method="post"><div style="margin:0;padding:0"><input name="authenticity_token" type="hidden" value="8b4ec68b583c80f534d2719b9533f6294a869d23" /></div><input id="asin" name="asin" type="hidden" value="B000OZ0NNA" /><input id="annotation_id" name="annotation_id" type="hidden" value="a1M80MSCOJGM0B" /><span class="deleteHighlight"><button class="textSubmit" name="delete" type="submit"><span class="bullet">&nbsp;&nbsp;&nbsp;&#8226;&nbsp;</span><span class="underline">Delete&nbsp;this&nbsp;highlight</span></button></span><span class="deleteHighlightUndo hidden"><button class="textSubmit" name="undo" type="submit"><span class="bullet">&nbsp;&nbsp;&nbsp;&#8226;&nbsp;</span><span class="underline">Undo&nbsp;deletion</span></button></span></form>
+                <span class="highlight">Lorem ipsum etc etc. Giuliano della Rovere, His Holiness Pope Julius IIâ€”il pontefice terribile. And so on and so forth.</span><a href="kindle://book?action=open&asin=B000OZ0NNA&location=161" class="k4pcReadMore readMore">Read&nbsp;more&nbsp;at&nbsp;location&nbsp;161</a><form action="/user_annotation_relation/delete_highlight" class="deleteHighlightForm" method="post"><div style="margin:0;padding:0"><input name="authenticity_token" type="hidden" value="8b4ec68b583c80f534d2719b9533f6294a869d23" /></div><input id="asin" name="asin" type="hidden" value="B000OZ0NNA" /><input id="annotation_id" name="annotation_id" type="hidden" value="a1M80MSCOJGM0B" /><span class="deleteHighlight"><button class="textSubmit" name="delete" type="submit"><span class="bullet">&nbsp;&nbsp;&nbsp;&#8226;&nbsp;</span><span class="underline">Delete&nbsp;this&nbsp;highlight</span></button></span><span class="deleteHighlightUndo hidden"><button class="textSubmit" name="undo" type="submit"><span class="bullet">&nbsp;&nbsp;&nbsp;&#8226;&nbsp;</span><span class="underline">Undo&nbsp;deletion</span></button></span></form>
 
                 <p class="editNote " id="editNotea1M80MSCOJGM0B_a1CRH3E2HA6TAP">
                         <span class="hidden asin">B000OZ0NNA</span>
@@ -82,7 +124,7 @@ and on-mouse-over of the span -->
 
 <div class="highlightRow personalHighlight">
 
-     <img alt="&ldquo;" class="quote removableQuote" src="http://g-ecx.images-amazon.com/images/G/01/reading/images/perOpenQuoteSm._V216850697_.png" title="Personal Highlight" />
+     <img alt="&ldquo;" class="quote removableQuote" src="http://g-ecx.images-amazon.com/images/G/01/reading/images/perOpenQuoteSm._V216850697_.png"; title="Personal Highlight" />
 
         <div class="text">
                 <span class="highlight">Giuliano della Rovere, His Holiness Pope Julius IIâ€”il pontefice terribile.</span><a href="kindle://book?action=open&asin=B000OZ0NNA&location=161" class="k4pcReadMore readMore">Read&nbsp;more&nbsp;at&nbsp;location&nbsp;161</a><form action="/user_annotation_relation/delete_highlight" class="deleteHighlightForm" method="post"><div style="margin:0;padding:0"><input name="authenticity_token" type="hidden" value="8b4ec68b583c80f534d2719b9533f6294a869d23" /></div><input id="asin" name="asin" type="hidden" value="B000OZ0NNA" /><input id="annotation_id" name="annotation_id" type="hidden" value="a1M80MSCOJGM0B" /><span class="deleteHighlight"><button class="textSubmit" name="delete" type="submit"><span class="bullet">&nbsp;&nbsp;&nbsp;&#8226;&nbsp;</span><span class="underline">Delete&nbsp;this&nbsp;highlight</span></button></span><span class="deleteHighlightUndo hidden"><button class="textSubmit" name="undo" type="submit"><span class="bullet">&nbsp;&nbsp;&nbsp;&#8226;&nbsp;</span><span class="underline">Undo&nbsp;deletion</span></button></span></form>
@@ -105,7 +147,7 @@ and on-mouse-over of the span -->
 
 <div class="highlightRow personalHighlight">
 
-     <img alt="&ldquo;" class="quote removableQuote" src="http://g-ecx.images-amazon.com/images/G/01/reading/images/perOpenQuoteSm._V216850697_.png" title="Personal Highlight" />
+     <img alt="&ldquo;" class="quote removableQuote" src="http://g-ecx.images-amazon.com/images/G/01/reading/images/perOpenQuoteSm._V216850697_.png"; title="Personal Highlight" />
 
         <div class="text">
                 <span class="highlight">Giuliano della Rovere, His Holiness Pope Julius IIâ€”il pontefice terribile.</span><a href="kindle://book?action=open&asin=B000OZ0NNA&location=161" class="k4pcReadMore readMore">Read&nbsp;more&nbsp;at&nbsp;location&nbsp;161</a><form action="/user_annotation_relation/delete_highlight" class="deleteHighlightForm" method="post"><div style="margin:0;padding:0"><input name="authenticity_token" type="hidden" value="8b4ec68b583c80f534d2719b9533f6294a869d23" /></div><input id="asin" name="asin" type="hidden" value="B000OZ0NNA" /><input id="annotation_id" name="annotation_id" type="hidden" value="a1M80MSCOJGM0B" /><span class="deleteHighlight"><button class="textSubmit" name="delete" type="submit"><span class="bullet">&nbsp;&nbsp;&nbsp;&#8226;&nbsp;</span><span class="underline">Delete&nbsp;this&nbsp;highlight</span></button></span><span class="deleteHighlightUndo hidden"><button class="textSubmit" name="undo" type="submit"><span class="bullet">&nbsp;&nbsp;&nbsp;&#8226;&nbsp;</span><span class="underline">Undo&nbsp;deletion</span></button></span></form>
@@ -129,7 +171,7 @@ and on-mouse-over of the span -->
 
 <div class="highlightRow personalHighlight">
 
-     <img alt="&ldquo;" class="quote removableQuote" src="http://g-ecx.images-amazon.com/images/G/01/reading/images/perOpenQuoteSm._V216850697_.png" title="Personal Highlight" />
+     <img alt="&ldquo;" class="quote removableQuote" src="http://g-ecx.images-amazon.com/images/G/01/reading/images/perOpenQuoteSm._V216850697_.png"; title="Personal Highlight" />
 
         <div class="text">
                 <span class="highlight">Giuliano della Rovere, His Holiness Pope Julius IIâ€”il pontefice terribile.</span><a href="kindle://book?action=open&asin=B000OZ0NNA&location=161" class="k4pcReadMore readMore">Read&nbsp;more&nbsp;at&nbsp;location&nbsp;161</a><form action="/user_annotation_relation/delete_highlight" class="deleteHighlightForm" method="post"><div style="margin:0;padding:0"><input name="authenticity_token" type="hidden" value="8b4ec68b583c80f534d2719b9533f6294a869d23" /></div><input id="asin" name="asin" type="hidden" value="B000OZ0NNA" /><input id="annotation_id" name="annotation_id" type="hidden" value="a1M80MSCOJGM0B" /><span class="deleteHighlight"><button class="textSubmit" name="delete" type="submit"><span class="bullet">&nbsp;&nbsp;&nbsp;&#8226;&nbsp;</span><span class="underline">Delete&nbsp;this&nbsp;highlight</span></button></span><span class="deleteHighlightUndo hidden"><button class="textSubmit" name="undo" type="submit"><span class="bullet">&nbsp;&nbsp;&nbsp;&#8226;&nbsp;</span><span class="underline">Undo&nbsp;deletion</span></button></span></form>
@@ -152,7 +194,7 @@ This annotation has a newline in it too.</span>
 
 <div class="highlightRow personalHighlight">
 
-     <img alt="&ldquo;" class="quote removableQuote" src="http://g-ecx.images-amazon.com/images/G/01/reading/images/perOpenQuoteSm._V216850697_.png" title="Personal Highlight" />
+     <img alt="&ldquo;" class="quote removableQuote" src="http://g-ecx.images-amazon.com/images/G/01/reading/images/perOpenQuoteSm._V216850697_.png"; title="Personal Highlight" />
 
         <div class="text">
                 <span class="highlight">Giuliano della Rovere, His Holiness Pope Julius IIâ€”il pontefice terribile.</span><a href="kindle://book?action=open&asin=B000OZ0NNA&location=161" class="k4pcReadMore readMore">Read&nbsp;more&nbsp;at&nbsp;location&nbsp;161</a><form action="/user_annotation_relation/delete_highlight" class="deleteHighlightForm" method="post"><div style="margin:0;padding:0"><input name="authenticity_token" type="hidden" value="8b4ec68b583c80f534d2719b9533f6294a869d23" /></div><input id="asin" name="asin" type="hidden" value="B000OZ0NNA" /><input id="annotation_id" name="annotation_id" type="hidden" value="a1M80MSCOJGM0B" /><span class="deleteHighlight"><button class="textSubmit" name="delete" type="submit"><span class="bullet">&nbsp;&nbsp;&nbsp;&#8226;&nbsp;</span><span class="underline">Delete&nbsp;this&nbsp;highlight</span></button></span><span class="deleteHighlightUndo hidden"><button class="textSubmit" name="undo" type="submit"><span class="bullet">&nbsp;&nbsp;&nbsp;&#8226;&nbsp;</span><span class="underline">Undo&nbsp;deletion</span></button></span></form>
@@ -173,7 +215,7 @@ This annotation has a newline in it too.</span>
 </div>
 
 <div>
-	<span><h2>some other markup</h2></span>
+     <span><h2>some other markup</h2></span>
 </div>
 
 </body>
